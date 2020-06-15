@@ -39,7 +39,7 @@ class Num {
     }
   }
   generateChildren(){
-    this.children.push(makeNextNum(this.x,this.y,this.r,this.angle,this.number*2))
+    this.children.push(makeNextNum(this.x,this.y,this.r,this.angle+angleIncrease,this.number*2))
     if(isValidBranch((this.number-1)/3)){
 
       this.children.push(makeNextNum(this.x,this.y,this.r,this.angle+Math.PI/2,(this.number-1)/3));
@@ -94,7 +94,7 @@ function makeNextNum(x,y,r,angle,number){
   var newX=x+Math.cos(angle)*(lineLengthMultiplier*r);
   var newY=y+Math.sin(angle)*(lineLengthMultiplier*r);
 
-  return new Num(newX,newY,newR,angle+angleIncrease,number)
+  return new Num(newX,newY,newR,angle,number)
 
 }
 function isValidBranch(num){
@@ -137,7 +137,7 @@ function draw(){
   //drawLine(canvas.width/2, 0, canvas.width/2, canvas.height)
 
   //recursiveDrawNode(canvas.width/2,canvas.height/2,50,-0.1,1);
-  treeDrawNodes(canvas.width/2,canvas.height/2,50,-0.1,1);
+  treeDrawNodes(canvas.width/2,canvas.height/2,50,0,1);
 
   ctx.restore();
 }
