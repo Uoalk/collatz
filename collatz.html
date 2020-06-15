@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <style>
 #canvas{
   border:1px solid black;
@@ -8,13 +10,30 @@
 #canvas-holder{
   text-align: center;
 }
+body{
+  vertical-align: top;
+}
 </style>
 </head>
 <body>
-<div id="canvas-holder">
+<table class="table"><tr>
+<td id="options" style="width: 20%">
+
+  Line Length: <input type="range" step=0.01 min="1" max="10" value="5" class="slider" id="lineLength" oninput="updateOptions()"></input><br>
+  Radius Scale: <input type="range" step=0.01 min="0.5" max="0.8" value="0.8" class="slider" id="radiusScale" oninput="updateOptions()"></input><br>
+  Angle Increase: <input type="range" step=0.01 min="0" max="0.8" value="0.69" class="slider" id="angleIncrease" oninput="updateOptions()"></input><br>
+  Minimum Draw Radius: <input type="range" step=0.01 min="0.1" max="2" value="1" class="slider" id="drawRadius" oninput="updateOptions()"></input><br>
+  Loop: <input type="checkbox" id="loop" oninput="updateOptions()"></input><br>
+  Phantom: <input type="checkbox" id="phantom" oninput="updateOptions()"></input><br>
+  Threes: <input type="checkbox" id="threes" checked oninput="updateOptions()"></input><br>
+</td>
+
+<td id="canvas-holder" style="width: 90%">
   <canvas id="canvas" width=1000 height=800></canvas>
-</div>
-  <script src="https://code.easypz.io/easypz.latest.min.js"></script>
-  <script src="collatz.js"></script>
+</td>
+</tr></table>
+<script src="https://code.easypz.io/easypz.latest.min.js"></script>
+<script src="collatz.js"></script>
+
 </body>
 </html>
