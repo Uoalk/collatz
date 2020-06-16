@@ -44,6 +44,8 @@ class Num {
 
       this.children.push(makeNextNum(this.x,this.y,this.r,this.angle+Math.PI/2,(this.number-1)/3));
     }
+    document.getElementById("level").innerHTML="Levels: "+headNum.countLevels()
+
   }
   generateLowestLayer(){
     if(this.children.length==0){
@@ -88,6 +90,17 @@ class Num {
   killChildren(){
     this.children=[];
   }
+  countLevels(){
+    if(this.children.length==0)return 1;
+    else return 1+this.children[0].countLevels();
+  }
+  getAllNumbers(){
+    var arr=[this.number]
+    for(var i of this.children){
+      arr=arr.concat(i.getAllNumbers())
+    }
+    return arr
+  }
 }
 function makeNextNum(x,y,r,angle,number){
   var newR=r*rScale;
@@ -130,6 +143,7 @@ function updateOptions(){
 
 function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height)
+
 
   ctx.save();
   ctx.transform(scale, 0, 0, scale, tranX, tranY);
