@@ -1,7 +1,7 @@
 # A Interactive Visual Representation of the Collatz Conjecture
 
 <p>
-    <img src="demo.png"/>
+    <img src="/Demo.PNG"/>
 </p>
 
 This program will display an interactive diagram of the chain of numbers described
